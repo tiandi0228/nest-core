@@ -1,22 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
+import { BaseException } from './exception/base.exception';
+import { ErrorStatus } from './enmus/errorStatus.enmus';
 
 @Injectable()
 export class AppService {
-    getHello(): object {
-        return {
-            code: 0,
-            message: '',
-            data: 'Hello World!',
-        };
+    getHello(): string {
+        // throw new BaseException('错误', ErrorStatus.EMPTY_USER);
+        return 'Hello World!';
     }
 
     getVersion(): object {
         return {
-            code: 0,
-            message: '',
-            data: {
-                version: '0.0.1',
-            },
+            version: '0.0.1'
         };
     }
 }
