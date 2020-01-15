@@ -1,21 +1,21 @@
 import {HttpException} from '@nestjs/common';
-import { ErrorStatus } from '../enmus/errorStatus.enmus';
+import { ErrorCode, ErrorMessage } from '../enmus/errorStatus.enmus';
 
 export class BaseException extends HttpException {
-    code: ErrorStatus;
-    message: string;
+    code: ErrorCode;
+    message: ErrorMessage;
 
-    constructor(errorMessage: string, errorCode: ErrorStatus) {
+    constructor(errorCode: ErrorCode, errorMessage: ErrorMessage) {
         super(errorMessage, errorCode);
         this.code = errorCode;
         this.message = errorMessage;
     }
 
-    getErrorCode(): ErrorStatus {
+    getErrorCode(): ErrorCode {
         return this.code;
     }
 
-    getErrorMessage(): string {
+    getErrorMessage(): ErrorMessage {
         return this.message;
     }
 }
